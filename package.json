@@ -3,23 +3,17 @@
   "version": "2.0.3",
   "description": "Lightweight, beautiful and user-friendly prompts",
   "license": "MIT",
-  "repository": "terkelg/prompts",
-  "main": "index.js",
-  "author": {
-    "name": "Terkel Gjervig",
-    "email": "terkel@terkel.com",
-    "url": "https://terkel.com"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stramel/prompts.git"
   },
-  "files": [
-    "lib",
-    "dist",
-    "index.js"
-  ],
+  "author": {
+    "name": "Michael Stramel",
+    "url": "https://github.com/stramel"
+  },
   "scripts": {
-    "start": "node lib/index.js",
-    "build": "babel lib -d dist",
-    "prepublishOnly": "npm run build",
-    "test": "tape test/*.js | tap-spec"
+    "build": "tsc -p .",
+    "test": "echo \"no tests setup\" || exit 1"
   },
   "keywords": [
     "ui",
@@ -40,12 +34,7 @@
     "sisteransi": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
-    "@babel/preset-env": "^7.3.1",
-    "tap-spec": "^5.0.0",
-    "tape": "^4.9.2"
+    "@types/node": "^11.9.5"
   },
   "engines": {
     "node": ">= 6"
