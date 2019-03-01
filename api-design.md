@@ -59,7 +59,7 @@ const { dish } = await prompt(
   })
 )
 
-if (dish !== 'pizaa') return
+if (dish !== 'pizza') return
 
 const { topping } = await prompt(
   text({
@@ -116,6 +116,8 @@ Events
 
 - `'state'`
 - `'render'`
+- `'submit'`
+- `'abort'`
 
 ## Text
 

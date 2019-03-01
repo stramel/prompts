@@ -12,7 +12,7 @@
     "url": "https://github.com/stramel"
   },
   "scripts": {
-    "build": "tsc -p .",
+    "build": "pack build",
     "test": "echo \"no tests setup\" || exit 1"
   },
   "keywords": [
@@ -34,9 +34,34 @@
     "sisteransi": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "^11.9.5"
+    "@pika/pack": "^0.3.3",
+    "@pika/plugin-build-node": "^0.3.12",
+    "@pika/plugin-simple-bin": "^0.3.12",
+    "@pika/plugin-ts-standard-pkg": "^0.3.12",
+    "@types/node": "^11.9.5",
+    "typescript": "^3.3.3333"
   },
   "engines": {
     "node": ">= 6"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg"
+      ],
+      [
+        "@pika/plugin-simple-bin",
+        {
+          "bin": "inquire",
+          "minNodeVersion": 6
+        }
+      ],
+      [
+        "@pika/plugin-build-node",
+        {
+          "minNodeVersion": 6
+        }
+      ]
+    ]
   }
 }

@@ -1,6 +1,7 @@
 node_modules
 dist
 lib/
+pkg/
 
 
 .DS_Store

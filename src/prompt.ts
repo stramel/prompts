@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import { createInterface, emitKeypressEvents, Interface, Key } from 'readline';
-import color = require('kleur')
+import * as color  from 'kleur'
 import { beep, cursor } from 'sisteransi'
 
 
@@ -92,10 +92,13 @@ export abstract class Prompt extends EventEmitter {
 
   private keypress(chunk: string, key: Key): void {
     const action = getAction(key);
+    // @ts-ignore
     if (action === false && typeof this._keypress === 'function') {
       // Unknown action
+    // @ts-ignore
       this._keypress(chunk, key);
     } else if (action !== false && typeof this[action] === 'function') {
+      // @ts-ignore
       this[action]!(key);
     } else {
       this.beep();
@@ -113,6 +116,7 @@ export abstract class Prompt extends EventEmitter {
     this.readline.close();
 
     // QUESTION: Where is value coming from?
+    // @ts-ignore
     this.emit(this.aborted ? 'abort' : 'submit', this.value)
     this.closed = true;
   }
@@ -122,6 +126,7 @@ export abstract class Prompt extends EventEmitter {
   }
 
   protected render(input: string): string | Promise<string> {
+    // @ts-ignore
     if (this.closed) return
     this.emit('render', {
       color,
@@ -139,45 +144,3 @@ export abstract class Prompt extends EventEmitter {
     return true
   }
 }
-
-
-
-
-
-
-// abstract class Prompt extends EventEmitter {
-//   abstract name: string | Function
-//   abstract message: string | Function
-//   abstract initial?: unknown | Function
-
-//   constructor(options: Options = {}) {
-//     super();
-
-//     // TODO: Assign options
-//   }
-
-//   render(input: ValidInputType): string {
-//     return String(input)
-//   }
-
-//   /**
-//    *
-//    * @param input
-//    * @param key
-//    * @param values
-//    */
-//   format(input: ValidInputType | undefined, key: string, values: Result): ValidInputType | null | undefined {
-//     return input
-//   }
-
-//   /**
-//    * Validate the user input
-//    * @param input - The user input
-//    * @param key - The key of the prompt
-//    * @param values - All inputs so far
-//    * @return - Should return `true` if the value is valid, and an error message `string` otherwise. If `false` is returned, a default error message is shown.
-//    */
-//   validate(input: ValidInputType | undefined, key: string, values: Result): boolean | string {
-//     return true
-//   }
-// }

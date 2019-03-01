@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "es2015",
+    "target": "es2018",
+    "module": "esnext",
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
@@ -14,7 +14,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": ["node"]
   },
   "include": ["custom_typings/*.d.ts", "src/**/*.ts"]
 }
